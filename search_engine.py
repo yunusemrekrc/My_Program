@@ -49,6 +49,9 @@ def main():
         print('Usage: python search_engine.py <documents_directory>')
         sys.exit(1)
     directory = sys.argv[1]
+    if not os.path.isdir(directory):
+        print(f"Error: directory '{directory}' does not exist")
+        sys.exit(1)
     index, _ = build_index(directory)
     print('Index built. Enter search queries (blank line to exit).')
     while True:
