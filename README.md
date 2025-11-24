@@ -5,15 +5,16 @@ This repository contains a simple offline search engine implemented in Python.
 ## search_engine.py
 
 ```
-usage: python search_engine.py <documents_directory>
+usage: python search_engine.py [-k LIMIT] directory
 ```
 
-The script indexes all `.txt` files in the specified directory and allows you to search for documents containing the query terms. Queries are entered interactively; entering a blank line exits the program.
+The script recursively indexes all `.txt` files in the specified directory, builds a TF-IDF index, and lets you search for relevant documents. Queries are entered interactively; enter `:list` to see indexed files, `:quit` or a blank line to exit. Use `-k`/`--limit` to adjust how many results are shown (default 10).
 
-Make sure the directory exists and contains some text files before running the script. For example:
+Quick start example:
 
 ```bash
-mkdir docs
+mkdir -p docs/notes
 echo "hello world" > docs/example.txt
+echo "another document about search" > docs/notes/search.txt
 python3 search_engine.py docs
 ```
